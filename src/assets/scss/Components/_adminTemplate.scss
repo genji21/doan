@@ -1,0 +1,33 @@
+#components-layout-demo-side .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout {
+  .site-layout-background {
+    background: #fff;
+    margin-top: 2%;
+
+    .admin__user--text {
+      font-weight: bold;
+    }
+
+    form {
+      .btn {
+        width: 50%;
+      }
+    }
+  }
+
+  .footer {
+    height: 50px;
+    text-align: center;
+    padding: 10px 0 0;
+
+    h3 {
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import'./assets/scss/Helper/mixin';
+@import'./assets/scss/Helper/variables';
+@import'./assets/scss/Helper/extend';
+
+//Base
+@import'./assets/scss/Base/reset';
+@import'./assets/scss/Base/customizes';
+
+//Components
+@import'./assets/scss/Components/button';
+@import'./assets/scss/Components/container';
+@import'./assets/scss/Components/slick';
+@import'./assets/scss/Components/loadingComponent';
+@import'./assets/scss/Components/adminTemplate';
+
+// Layouts

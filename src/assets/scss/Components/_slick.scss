@@ -1,0 +1,16 @@
+.slick-slider {
+
+  .slick-arrow {
+    background: #000;
+    color: white;
+
+    .slick-prev,
+    .slick-next {
+
+      &:hover,
+      &:focus {
+        background: #000;
+      }
+    }
+  }
+}
