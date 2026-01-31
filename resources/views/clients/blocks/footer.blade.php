@@ -56,7 +56,7 @@
                             <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i>QUY NHON DA NANG  </li>
+                            <li><i class="fal fa-map-marked-alt"></i>TPHCM</li>
                             <li><i class="fal fa-envelope"></i> <a
                                     href="mailto:dinhphi751@gmail.com">dinhphi751@gmail.com</a></li>
                             <li><i class="fal fa-phone-volume"></i> <a href="callto:+88012334588">+880 (123)
