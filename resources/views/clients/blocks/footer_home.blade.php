@@ -100,7 +100,7 @@
                             <h5>Liên hệ</h5>
                         </div>
                         <ul class="list-style-one">
-                            <li><i class="fal fa-map-marked-alt"></i> TPHCM DA NANG</li>
+                            <li><i class="fal fa-map-marked-alt"></i> TPHCM</li>
                             <li><i class="fal fa-envelope"></i> <a
                                     href="mailto:dinhphi751@gmail.com">dinhphi751@gmail.com</a></li>
                             <li><i class="fal fa-clock"></i> Thứ 2 - Thứ 6, 08am - 05pm</li>
