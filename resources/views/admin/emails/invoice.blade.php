@@ -44,7 +44,16 @@
                 <div class="col-sm-4 invoice-col" style="font-size: 14px;">
                     <b>Mã hóa đơn #{{ $invoice_booking->checkoutId }}</b><br>
                     <b>Mã giao dịch:</b> {{ $invoice_booking->transactionId }}<br>
-                    <b>Ngày thanh toán:</b> {{ $invoice_booking->paymentDate }}<br>
+                    <b>Ngày thanh toán:</b>
+                    @if(!empty($invoice_booking->paymentDate))
+                        {{ date('d-m-Y', strtotime($invoice_booking->paymentDate)) }}<br>
+                    @elseif(!empty($invoice_booking->updated_at))
+                        {{ date('d-m-Y', strtotime($invoice_booking->updated_at)) }}<br>
+                    @elseif(!empty($invoice_booking->created_at))
+                        {{ date('d-m-Y', strtotime($invoice_booking->created_at)) }}<br>
+                    @else
+                        Chưa có<br>
+                    @endif
                     <b>Tài khoản:</b> {{ $invoice_booking->userId }}
                 </div>
             </div>

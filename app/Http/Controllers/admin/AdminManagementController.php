@@ -36,7 +36,7 @@ class AdminManagementController extends Controller
         if ($password != $oldPass) {
             $password = md5($password);
         }
-        
+
 
         $dataUpdate = [
             'fullName' => $fullName,
@@ -60,20 +60,46 @@ class AdminManagementController extends Controller
 
     public function updateAvatar(Request $req)
     {
-        // dd($req->all());
+        // Handle avatar upload for admin
         $avatar = $req->file('avatarAdmin');
 
-        // Tạo tên mới cho tệp ảnh
-        $filename = 'avt_admin.jpg'; // Tên tệp mới
-        unlink(public_path('admin/assets/images/user-profile/1735832424.jpg'));
-
-        // Di chuyển ảnh vào thư mục public/admin/assets/images/user-profile/
-        $update = $avatar->move(public_path('admin/assets/images/user-profile'), $filename);
-
-        if (!$update) {
-            return response()->json(['error' => true, 'message' => 'Có vấn đề khi cập nhật ảnh!']);
+        if (!$avatar) {
+            return response()->json(['error' => true, 'message' => 'Không có tệp ảnh được gửi.']);
         }
-        return response()->json(['success' => true, 'message' => 'Cập nhật ảnh thành công!']);
+
+        $uploadDir = public_path('admin/assets/images/user-profile');
+
+        // ensure directory exists
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        // Get current admin avatar and delete if exists
+        $admin = $this->admin->getAdmin();
+        $oldAvatar = $admin->avatar ?? null;
+        if ($oldAvatar) {
+            $oldPath = $uploadDir . DIRECTORY_SEPARATOR . $oldAvatar;
+            if (file_exists($oldPath)) {
+                @unlink($oldPath);
+            }
+        }
+
+        // Build new filename (keep extension)
+        $extension = $avatar->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+
+        // Move uploaded file
+        try {
+            $avatar->move($uploadDir, $filename);
+        } catch (\Exception $e) {
+            return response()->json(['error' => true, 'message' => 'Có vấn đề khi lưu tệp ảnh: ' . $e->getMessage()]);
+        }
+
+        // Update admin record and session
+        $this->admin->updateAdmin(['avatar' => $filename]);
+        $req->session()->put('avatar', $filename);
+
+        return response()->json(['success' => true, 'message' => 'Cập nhật ảnh thành công!', 'avatar' => $filename]);
     }
 
 }

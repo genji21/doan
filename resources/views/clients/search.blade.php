@@ -14,7 +14,7 @@
                             <div class="image">
                                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
                                 @if (count($tour->images) > 0)
-                                    <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images[0]) }}"
+                                    <img src="{{ filter_var($tour->images[0], FILTER_VALIDATE_URL) ? $tour->images[0] : asset('admin/assets/images/gallery-tours/' . $tour->images[0]) }}"
                                         alt="Tour List">
                                 @else
                                     <img src="{{ asset('admin/assets/images/no-image.jpg') }}" alt="No Image Available">

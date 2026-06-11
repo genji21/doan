@@ -71,7 +71,18 @@
                                                 <br>
                                                 <b>Mã giao dịch:</b> {{ $invoice_booking->transactionId }}
                                                 <br>
-                                                <b>Ngày thanh toán:</b> {{ $invoice_booking->paymentDate }}
+                                                <b>Ngày thanh toán:</b>
+                                                <?php
+                                                if (isset($invoice_booking->paymentDate) && $invoice_booking->paymentDate) {
+                                                    echo date('d-m-Y', strtotime($invoice_booking->paymentDate));
+                                                } elseif (isset($invoice_booking->updated_at) && $invoice_booking->updated_at) {
+                                                    echo date('d-m-Y', strtotime($invoice_booking->updated_at));
+                                                } elseif (isset($invoice_booking->created_at) && $invoice_booking->created_at) {
+                                                    echo date('d-m-Y', strtotime($invoice_booking->created_at));
+                                                } else {
+                                                    echo 'Chưa có';
+                                                }
+                                                ?>
                                                 <br>
                                                 <b>Tài khoản:</b> {{ $invoice_booking->userId }}
                                             </div>

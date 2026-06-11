@@ -57,27 +57,27 @@
                                             <button type="button" class="btn btn-primary btn-warning"
                                                 data-attr='{"userId": "{{ $user->userId }}", "action": "{{ route('admin.status-user') }}", "status": "b"}'
                                                 id="btn-ban"
-                                                style="{{ $user->status === 'b' ? 'display: none;' : '' }}">
+                                                style="{{ ($user->status ?? '') === 'b' ? 'display: none;' : '' }}">
                                                 <i class="fa fa-ban"> </i> Chặn
                                             </button>
 
                                             <button type="button" class="btn btn-primary btn-warning"
                                                 data-attr='{"userId": "{{ $user->userId }}", "action": "{{ route('admin.status-user') }}", "status": ""}'
                                                 id="btn-unban"
-                                                style="{{ $user->status !== 'b' ? 'display: none;' : '' }}">
+                                                style="{{ ($user->status ?? '') !== 'b' ? 'display: none;' : '' }}">
                                                 <i class="fa fa-ban"> </i> Bỏ chặn
                                             </button>
 
                                             <button type="button" class="btn btn-primary btn-danger"
                                                 data-attr='{"userId": "{{ $user->userId }}", "action": "{{ route('admin.status-user') }}", "status": "d"}'
                                                 id="btn-delete"
-                                                style="{{ $user->status === 'd' ? 'display: none;' : '' }}">
+                                                style="{{ ($user->status ?? '') === 'd' ? 'display: none;' : '' }}">
                                                 <i class="fa fa-close"> </i> Xóa
                                             </button>
                                             <button type="button" class="btn btn-primary btn-danger"
                                                 data-attr='{"userId": "{{ $user->userId }}", "action": "{{ route('admin.status-user') }}", "status": ""}'
                                                 id="btn-restore"
-                                                style="{{ $user->status !== 'd' ? 'display: none;' : '' }}">
+                                                style="{{ ($user->status ?? '') !== 'd' ? 'display: none;' : '' }}">
                                                 <i class="fa fa-close"> </i> Khôi phục
                                             </button>
 
